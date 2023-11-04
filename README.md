@@ -30,4 +30,5 @@ MediaPipe is an open-source Python library developed by Google that provides a c
 ### Hand Landmarks in MediaPipe
 In MediaPipe, hand landmarks refer to the precise points or landmarks detected on a human hand in an image or video. The library's Hand module provides a machine learning model that can estimate the 21 key landmarks on a hand, including the tips of each finger, the base of the palm, and various points on the fingers and hand. These landmarks can be used for various applications, such as hand tracking, gesture recognition, sign language interpretation, and virtual reality interactions. MediaPipe's hand landmarks model makes it easier for developers to create applications that can understand and respond to hand movements and gestures in real-time.
 
-![download](https://github.com/ajinkya110001/ERC-HandDetectionAssignment/assets/120250764/7a23c9cb-4af3-4673-b20a-3d687bd7c09a)
+![HandLandmarks](https://github.com/ajinkya110001/ERC-HandDetectionAssignment/assets/120250764/d4983587-f698-4bfd-aa43-216229697fa4)
+
