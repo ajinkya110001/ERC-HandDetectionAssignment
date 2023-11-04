@@ -4,7 +4,7 @@
 
 - Fork the repo
 - clone it on your system
-- create a new brach (git checkout -b assignment_3)
+- create a new branch (git checkout -b assignment_3)
 - make the required changes in the python file (main.py)
 - push your changes on github
 - make a pull request
