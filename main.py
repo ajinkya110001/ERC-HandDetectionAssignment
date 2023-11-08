@@ -1,15 +1,33 @@
 import cv2
 import mediapipe as mp
 
-cap=cv2.VideoCapture(0)
-#TODO: Add required mediapipe functions
+# Initialize MediaPipe Hands.
+mp_hands = mp.solutions.hands
+hands = mp_hands.Hands()
+
+# Start capturing video from the webcam.
+cap = cv2.VideoCapture(0)
 
 while True:
-    success, frame=cap.read()
-    
-    cv2.imshow("Hand Detection",frame)
+    ret, frame = cap.read()
 
-    #TODO: Implement the functions
+    # Flip the frame and convert it from BGR to RGB.
+    frame = cv2.flip(frame, 1)
+    frameRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    if cv2.waitKey(1) & 0xFF==ord('q'):
+    # Process the frame with MediaPipe Hands.
+    result = hands.process(frameRGB)
+
+    # If hand landmarks are detected, classify each hand as left or right.
+    if result.multi_hand_landmarks:
+        for hand in result.multi_handedness:
+            handType = hand.classification[0].label
+            print(handType)
+
+    # If the 'q' key is pressed, break the loop and stop the video capture.
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
+
+# Release the video capture and close all windows.
+cap.release()
+cv2.destroyAllWindows()
