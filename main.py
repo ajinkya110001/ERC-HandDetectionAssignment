@@ -16,8 +16,8 @@ def hand_detection_and_label(image,detection):
         x_max = int(max([coord.x for coord in j])*image_width)
         y_min = int(min([coord.y for coord in j])*image_height)
         y_max = int(max([coord.y for coord in j])*image_height)
-        cv2.rectangle(image,(x_min-10,y_min-10),(x_max+10,y_max+10),color=(255,255,0),thickness=2)
-        cv2.putText(image,f"{(detection.handedness[i][0].category_name)}",((x_min),int(y_min)-20),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=1,color=(0,255,255),thickness=2, lineType=cv2.LINE_AA,bottomLeftOrigin=False)
+        cv2.rectangle(image,(x_min-10,y_min-10),(x_max+10,y_max+10),color=(255,0,0),thickness=2)
+        cv2.putText(image,f"{(detection.handedness[i][0].category_name)}",((x_min),int(y_min)-20),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=1,color=(0,0,255),thickness=2, lineType=cv2.LINE_AA,bottomLeftOrigin=False)
 
 
 while True:
