@@ -1,10 +1,11 @@
 import cv2
 import mediapipe as mp
 
+cap = cv2.VideoCapture(0)
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 
-cap = cv2.VideoCapture(0)
+
 while True:
     success, frame = cap.read()
     frame = cv2.flip(frame, 1)
