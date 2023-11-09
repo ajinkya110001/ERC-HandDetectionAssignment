@@ -10,9 +10,9 @@ mpHands = mp.solutions.hands
 hands = mpHands.Hands(
     static_image_mode=False,
     model_complexity=1,
-min_detection_confidence = 0.75,
-min_tracking_confidence = 0.75,
-max_num_hands = 2)
+    min_detection_confidence=0.75,
+    min_tracking_confidence=0.75,
+    max_num_hands=2)
 
 # Start capturing video from webcam
 cap = cv2.VideoCapture(0)
@@ -45,26 +45,22 @@ while True:
             for i in results.multi_handedness:
 
                 # Return whether it is Right or Left Hand
-                label = MessageToDict(i)
-                ['classification'][0]['label']
+                label = MessageToDict(i)['classification'][0]['label']
 
                 if label == 'Left':
-                    # Display 'Left Hand' on
-                    # left side of window
+                    # Display 'Left Hand' on left side of window
                     cv2.putText(img, label + ' Hand',
                                 (20, 50),
-                                cv2.FONT_HERSHEY_COMPLEX,
-                                0.9, (0, 255, 0), 2)
+                                cv2.FONT_HERSHEY_SCRIPT_SIMPLEX,
+                                0.9, (0, 0, 255), 2)
 
                 if label == 'Right':
-                    # Display 'Left Hand'
-                    # on left side of window
+                    # Display 'Left Hand' on left side of window
                     cv2.putText(img, label + ' Hand', (460, 50),
-                                cv2.FONT_HERSHEY_COMPLEX,
-                                0.9, (0, 255, 0), 2)
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                0.9, (255, 0, 0), 2)
 
-                    # Display Video and when 'q'
-    # is entered, destroy the window
+    # Display Video and when 'q' is entered, destroy the window
     cv2.imshow('Image', img)
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
