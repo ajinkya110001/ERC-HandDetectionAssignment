@@ -51,17 +51,17 @@ while True:
 
     cv2.imshow('Hand Detection', frame) #display the video ( frame ) with the result
 
-    #Ask to show the landmarker . Wait few moments after pressing q to press any key(q/t)
+   # to show the landmarker / quit  .
+
+    pressedKey = cv2.waitKey(1) & 0xFF
+    if pressedKey == ord('q'):break
+    elif pressedKey == ord('t'):show_lines = not show_lines 
+    
+    """
+    ## i have used the above three code linees because it is more
 
     if cv2.waitKey(1) & 0xff == ord('q'): #Pressing the q key will end the programme 
         break
     elif cv2.waitKey(1) & 0xFF== ord('t'): #multiple press may need to be done . Below code can solve this problem 
         show_lines = not show_lines
-    
-    ## instead of using the above , if and elif line (at end part ), we can use the below code to make it more responsive while pressing key .
-    """ 
-    pressedKey = cv2.waitKey(1) & 0xFF
-    if pressedKey == ord('q'):break
-    elif pressedKey == ord('t'):show_lines = not show_lines 
-    
     """
