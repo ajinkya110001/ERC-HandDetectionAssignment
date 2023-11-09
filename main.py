@@ -12,7 +12,6 @@ while True:
     hands,frame=detector.findHands(frame)
     
     cv2.imshow("Hand Detection",frame)
-
     #TODO: Implement the functions
     if cv2.waitKey(1) & 0xFF==ord('q'):
         break
