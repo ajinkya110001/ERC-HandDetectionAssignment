@@ -58,7 +58,7 @@ while True:
     elif pressedKey == ord('t'):show_lines = not show_lines 
     
     """
-    ## i have used the above three code linees because it is more
+    ## I have used the above three code linees because it is more functional as compared to the below lines
 
     if cv2.waitKey(1) & 0xff == ord('q'): #Pressing the q key will end the programme 
         break
