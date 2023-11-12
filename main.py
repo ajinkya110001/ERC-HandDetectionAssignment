@@ -19,15 +19,11 @@ def get_label(index, hand, results):
     # Making a list of outputs
     op = [False, 0, 0]
 
-    #print(results.multi_handedness[0])
-    #print(index)
-
-    for some_hand in results.multi_handedness:
+    for ind, some_hand in enumerate(results.multi_handedness):
         # Check if the hand is same
-        if some_hand.classification[0].index != index:
+        if ind != index:
             continue
 
-        # print(index)
         # Process results
         label = some_hand.classification[0].label
         score = some_hand.classification[0].score
@@ -40,6 +36,9 @@ def get_label(index, hand, results):
         # Updating outputs
         op[0] = True
         op[1], op[2] = text, coords
+
+        # Breaking out of loop as we got the coordinates of the correct hand
+        break
 
     return op
 
@@ -63,6 +62,7 @@ while True:
     # Finding hand details if any
     results = hands.process(image)
 
+    # We draw the landmarks and process if we find a hand
     if results.multi_hand_landmarks:
         
         for index, hand in enumerate(results.multi_hand_landmarks):
@@ -71,15 +71,19 @@ while True:
 
             # Getting the Left/Right label of the index'th hand in the frame
             hand_label = get_label(index, hand, results)
+            
+            # If we found the coordinates (i.e. if value is True)
             if hand_label[0]:
                 text, coords = hand_label[1], hand_label[2]
-                # print(coords)
+                
+                # Overlapping the text 'Left' or 'Right' with the score
                 cv2.putText(image, text, coords, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-    
+    # Showing the results on the screen
     cv2.imshow("Hand Detection", image)
 
-    if cv2.waitKey(200) & 0xFF==ord('q'):
+    if cv2.waitKey(1) & 0xFF==ord('q'):
         break
 
+# Release the hardware/ software resources or any pointers
 cap.release()
