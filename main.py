@@ -71,7 +71,6 @@ with mp_hands.Hands(min_detection_confidence = 0.8, min_tracking_confidence = 0.
         # recolouring
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         # printing detections
-        print(results)
         
         # allows us to draw our landmarks to our image
         if results.multi_hand_landmarks:
@@ -85,10 +84,6 @@ with mp_hands.Hands(min_detection_confidence = 0.8, min_tracking_confidence = 0.
                 if get_label(num, hand, results):
                     text, coord = get_label(num, hand, results)
                     cv2.putText(image, text, coord, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-
-        
-        # save image
-        # cv2.imwrite(os.path.join("output Images", "{}.jpg".format(uuid.uuid1())), image)
 
         # then we 'render' that image to screen
         cv2.imshow('Hand Tracking', image) 
